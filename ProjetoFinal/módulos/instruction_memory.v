@@ -1,5 +1,3 @@
-// Atraso de 1 ciclo de clock para atualizar o PC
-
 module instruction_memory (
     input [31:0] A, // Endereço
     output [31:0] RD // Barramento de elitura de dados
@@ -12,4 +10,4 @@ begin
     RD <= instruction[A]; // Saída recebe a instrução
 end
 endmodule
-
+// fffgg
