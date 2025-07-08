@@ -1,3 +1,3 @@
 # ProjetoMipsSingleCicle
 
-Projeto baseado no cap[itulo 7 do livro Digital Design and Computer Architecture
+Projeto baseado no capítulo 7 do livro Digital Design and Computer Architecture
