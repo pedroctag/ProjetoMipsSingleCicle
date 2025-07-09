@@ -1,5 +1,5 @@
 // Escrita síncrona, leitura assíncrona
-
+//completo, precisa de mais testes para confirmar
 module register_file (
     input [4:0] A1, A2, A3, //! Endereços
     input [31:0] WD3, // Dados de entrada

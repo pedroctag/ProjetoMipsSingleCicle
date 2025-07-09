@@ -1,4 +1,4 @@
-module datapath (
+/*module datapath (
     input clk,
     input in
 );
@@ -19,4 +19,4 @@ instruction_memory im (
 register_file rf (
     .A1(instr[25:21]),
 
-);// FAZENDO EM ORDEM, ESTE É O PRIMEIRO DATAPATH QUE APARECE, LER MAIS
+);// FAZENDO EM ORDEM, ESTE É O PRIMEIRO DATAPATH QUE APARECE, LER MAIS*/

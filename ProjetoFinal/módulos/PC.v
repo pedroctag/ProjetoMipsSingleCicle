@@ -1,6 +1,7 @@
 module PC (
+    input clk,
     input [31:0] next_PC,
-    output [31:0] PC
+    output reg [31:0] PC
 );
 
 always @ (posedge clk)

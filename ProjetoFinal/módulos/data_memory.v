@@ -18,9 +18,6 @@ begin
     end
 end
 
-always @ (*)
-begin
-    RD <= Memory_cell[A]; // Lê da unidade de endereço A
-end
+assign RD = Memory_cell[A]; // Lê da unidade de endereço A
 
 endmodule
