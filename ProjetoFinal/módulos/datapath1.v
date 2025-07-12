@@ -1,6 +1,6 @@
 module datapath1 (
     input clk,
-    input [31:0] PCBranch, PCPlus4 // entradas do mux do PC
+    input [31:0] PCBranch, PCPlus4, // entradas do mux do PC
     input [4:0] WriteReg,
     input [31:0] Result, // Valor da saída do mux com data memory e ALU
     input PCSrc, // Sinal do módulo controlador PCSrc
