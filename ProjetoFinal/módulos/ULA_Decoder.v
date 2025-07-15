@@ -1,7 +1,7 @@
 module ULA_Decoder (
     input [5:0] Funct,
     input [1:0] ALUOp,
-    output [2:0] ULAControl
+    output reg [2:0] ULAControl
 );
 
 always @(*) begin
