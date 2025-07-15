@@ -47,7 +47,16 @@ always @(*) begin
             MemtoReg = 0;
             ULAOp = 01; 
         end
-        //default: 
+        default: begin
+            RegWrite = 0;
+            RegDst = 0;
+            ULASrc = 0;
+            Branch = 0;
+            MemWrite = 0;
+            MemtoReg = 0;
+            ULAOp = 00; 
+        end           
+
     endcase
 end
     
