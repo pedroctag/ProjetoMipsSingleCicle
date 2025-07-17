@@ -38,7 +38,7 @@ register_file rf (
     .WD3(Result),
     .RD1(SrcA),
     .RD2(WriteData),
-    .WE3(RegWrite)
+    .WE(RegWrite)
 );
 
 endmodule
