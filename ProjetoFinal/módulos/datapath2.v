@@ -1,7 +1,7 @@
 module datapath2 (
   input [31:0] SignImm,
   input [31:0] WriteData,
-  input [31:0] ScrA,
+  input [31:0] SrcA,
   input [2:0] ALUControl,
   input MemWrite,
   input MemtoReg,
@@ -27,13 +27,13 @@ module datapath2 (
     .B(SrcB),
     .ALUControl(ALUControl),
     .ALUResult(ALUResult),
-    .zero(zero)
+    .Zero(zero)
   );
 
   data_memory dmemory (
     .clk(clk),
     .A(ALUResult),
-    .WR(WriteData),
+    .WD(WriteData),
     .WE(MemWrite),
     .RD(ReadData)
   );
