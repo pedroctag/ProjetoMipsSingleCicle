@@ -1,5 +1,5 @@
 module datapath2 (
-  input [31:0] SignImm,
+  input [31:0] ImmExt,
   input [31:0] WriteData,
   input [31:0] SrcA,
   input [2:0] ALUControl,
@@ -17,7 +17,7 @@ module datapath2 (
   
   mux2x1_32bits muxin (
     .inA(WriteData),
-    .inB(SignImm),
+    .inB(ImmExt),
     .sel(ALUSrc),
     .out(SrcB)
   );
