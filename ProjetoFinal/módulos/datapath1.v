@@ -1,7 +1,6 @@
 module datapath1 (
-    input clk,
-    input [31:0] PCBranch, PCPlus4, // entradas do mux do PC
-    input [4:0] WriteReg,
+    input clk, rst,
+    input [31:0] PCTarget, PCPlus4, // entradas do mux do PC
     input [31:0] Result, // Valor da saída do mux com data memory e ALU
     input PCSrc, // Sinal do módulo controlador PCSrc
     input RegWrite, // Sinal do módulo controlador RegWrite
@@ -14,12 +13,13 @@ module datapath1 (
     
 mux2x1_32bits mux (
     .inA(PCPlus4),
-    .inB(PCBranch),
+    .inB(PCTarget),
     .sel(PCSrc),
     .out(next_PC)
 );
 
 PC pc(
+    .rst(rst),
     .clk(clk),
     .next_PC(next_PC),
     .PC(PC)
@@ -32,9 +32,9 @@ instruction_memory im (
 
 register_file rf (
     .clk(clk),
-    .A1(Instr[25:21]),
-    .A2(Instr[20:16]),
-    .A3(WriteReg),
+    .A1(Instr[19:15]),
+    .A2(Instr[24:20]),
+    .A3(Instr[11:7]),
     .WD3(Result),
     .RD1(SrcA),
     .RD2(WriteData),
