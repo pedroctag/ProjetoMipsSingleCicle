@@ -1,6 +1,7 @@
 module datapath3 (
   input [31:0] PC,
   input [25:0] Instr,
+  input [1:0] ImmSrc,
   output [31:0] PCTarget,
   output [31:0] PCPlus4,
   output [31:0] ImmExt,
@@ -9,7 +10,6 @@ module datapath3 (
 wire C_out;
 localparam N = 32;
 
-assign SignImm = SignImm_wire;
 
   carry_look_ahead #(.N(N)) sum1 (
     .A(PC),
@@ -21,6 +21,7 @@ assign SignImm = SignImm_wire;
 
   SignExtend signextend (
     .in(Instr[25:0]),
+    .ImmSrc(ImmScr),
     .out(ImmExt)
   );
 
