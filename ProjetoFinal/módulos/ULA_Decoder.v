@@ -21,6 +21,7 @@ casex (aux)
     7'b10_010_xx : ALUControl = 3'b101;
     7'b10_110_xx : ALUControl = 3'b011;
     7'b10_111_xx : ALUControl = 3'b010;
+    default: ALUControl = 3'b000; // Default case to avoid latches
 endcase    
 end
 
