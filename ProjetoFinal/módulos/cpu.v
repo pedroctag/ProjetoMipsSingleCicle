@@ -2,39 +2,34 @@ module cpu(
 input clk, rst
 );
 
-wire [5:0] Opcode, Funct;
-wire MemtoReg, MemWrite, Branch, ULASrc, RegDst, RegWrite; //outputs de controle da control unit
-wire [2:0] ALUControl; //outputs de controle da control unit
+wire PCSrc, ResultSrc, MemWrite, ALUSrc, RegWrite;
+wire [1:0] ImmSrc;
+wire [2:0] ALUControl;
 
-wire [31:0] PCBranch, PCPlus4, Result, PC, Instr, WriteData, SrcA; // Sinais datapath1 (Trata instruções)
-wire PCSrc, RegWire; // Sinais datapath1 (Trata instruções)
+wire zero;
+wire [31:0] Instr, PCTarget, PCPlus4, Result, PC, WriteData, SrcA;
 
-wire [31:0] SignImm; // Sinais datapath2 (Trata da memória e resultado)
-wire zero; // Sinais datapath2 (Trata da memória e resultado)
+wire [31:0] ImmExt;
 
-wire [4:0] WriteReg; // Sinal datapath3 (Trata dados internos)
-  
-assign PCSrc = zero & Branch;
-assign Opcode = Instr[31:26];
-assign Funct = Instr [5:0];
-
-Control_Unit controlunit(
-  .Opcode(Opcode), //input
-  .Funct(Funct), //input
-  .MemtoReg(MemtoReg), 
+Control_Unit control (
+  .op(Instr[6:0]),
+  .zero(zero),
+  .PCSrc(PCSrc),
+  .ResultSrc(ResultSrc),
   .MemWrite(MemWrite),
-  .Branch(Branch),
-  .ULASrc(ULASrc),
-  .RegDst(RegDst),
+  .ALUSrc(ALUSrc),
+  .ImmSrc(ImmSrc),
   .RegWrite(RegWrite),
+  .funct3(Instr[14:12]),
+  .funct7(Instr[30]),
   .ALUControl(ALUControl)
 );
 
-datapath1 instTr (
+datapath1 dp1 (
   .clk(clk),
-  .PCBranch(PCBranch),
+  .rst(rst),
+  .PCTarget(PCTarget),
   .PCPlus4(PCPlus4),
-  .WriteReg(WriteReg),
   .Result(Result),
   .PCSrc(PCSrc),
   .RegWrite(RegWrite),
@@ -44,26 +39,25 @@ datapath1 instTr (
   .SrcA(SrcA)
 );
 
-datapath2 memTr (
-  .SignImm(SignImm),
+datapath2 dp2 (
+  .ImmExt(ImmExt),
   .WriteData(WriteData),
   .SrcA(SrcA),
   .ALUControl(ALUControl),
   .MemWrite(MemWrite),
-  .MemtoReg(MemtoReg),
+  .ResultSrc(ResultSrc),
   .clk(clk),
-  .ALUSrc(ULASrc),
+  .ALUSrc(ALUSrc),
   .zero(zero),
   .Result(Result)
 );
 
-datapath3 indTr (
+datapath3 dp3 (
   .PC(PC),
-  .Instr(Instr[20:0]),
-  .RegDst(RegDst),
-  .PCBRanch(PCBranch),
+  .Instr(Instr[31:7]),
+  .ImmSrc(ImmSrc),
+  .PCTarget(PCTarget),
   .PCPlus4(PCPlus4),
-  .SignImm(SignImm),
-  .WriteReg(WriteReg)
+  .ImmExt(ImmExt)
 );
 endmodule

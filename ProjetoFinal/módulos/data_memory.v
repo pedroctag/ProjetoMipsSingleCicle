@@ -8,7 +8,7 @@ module data_memory (
     output [31:0] RD // Dado de leitura
 );
 
-reg [31:0] Memory_cell [0:31]; // 32 unidades de memória de 32 bits
+reg [31:0] Memory_cell [0:63]; // 32 unidades de memória de 32 bits
 
 always @ (posedge clk)
 begin

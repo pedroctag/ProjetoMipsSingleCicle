@@ -1,5 +1,5 @@
 module PC (
-    input clk,
+    input clk, rst,
     input [31:0] next_PC,
     output reg [31:0] PC
 );

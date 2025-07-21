@@ -1,4 +1,57 @@
 module Main_Decoder (
+    input [6:0] op,
+    output reg Branch,
+    output reg ResultSrc,
+    output reg MemWrite,
+    output reg ALUSrc,
+    output reg [1:0] ImmSrc,
+    output reg RegWrite,
+    output reg [1:0] ALUOp
+    );
+
+always @ (*)
+begin
+    casex (op)
+        7'b0000011: begin
+            RegWrite = 1;
+            ImmSrc = 2'b00;
+            ALUSrc = 1;
+            MemWrite = 0;
+            ResultSrc = 1;
+            Branch = 0;
+            ALUOp = 2'b00;
+        end
+        7'b0100011: begin
+            RegWrite = 0;
+            ImmSrc = 2'b01;
+            ALUSrc = 1;
+            MemWrite = 1;
+            ResultSrc = 1'bx;
+            Branch = 0;
+            ALUOp = 2'b00;
+        end
+        7'b0110011: begin
+            RegWrite = 1;
+            ImmSrc = 2'bxx;
+            ALUSrc = 0;
+            MemWrite = 0;
+            ResultSrc = 0;
+            Branch = 0;
+            ALUOp = 2'b10;
+        end
+        7'b1100011: begin
+            RegWrite = 0;
+            ImmSrc = 2'b10;
+            ALUSrc = 0;
+            MemWrite = 0;
+            ResultSrc = 1'bx;
+            Branch = 1;
+            ALUOp = 2'b01;
+        end 
+    endcase
+end
+endmodule
+/*module Main_Decoder (
     input [5:0] Opcode,
     output reg [1:0] ULAOp,
     output reg MemtoReg,
@@ -60,4 +113,4 @@ always @(*) begin
     endcase
 end
     
-endmodule
+endmodule*/

@@ -1,14 +1,17 @@
 module SignExtend(
-    input [24:0] in,
-    input ImmSrc,
-    output [31:0] out
+    input [31:7] in,
+    input [1:0] ImmSrc,
+    output reg [31:0] out
 );
-    wire [11:0] aux;
-
-    wire [19:0] bitone = {20{1'b1}};
-    wire [19:0] bitzero = {20{1'b0}};
-    
-    assign aux = (ImmSrc == 1) ? {in[24:18],in[4:0]}:in[24:13];
-    assign out = (aux[11] == 1) ? {bitone, aux} : {bitzero, aux};
+ 
+always @ (*)
+begin
+    case (ImmSrc)
+        2'b00 : out = {{20{in[31]}}, in[31:20]};
+        2'b01 : out = {{20{in[31]}}, in[11:7]};
+        2'b10 : out = {{20{in[31]}}, in[7], in[30:25], in[11:8], 1'b0};
+        default: out = 32'bx;
+    endcase
+end
 
 endmodule

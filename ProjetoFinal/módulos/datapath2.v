@@ -4,7 +4,7 @@ module datapath2 (
   input [31:0] SrcA,
   input [2:0] ALUControl,
   input MemWrite,
-  input MemtoReg,
+  input ResultSrc,
   input clk,
   input ALUSrc,
   output zero,
@@ -41,7 +41,7 @@ module datapath2 (
   mux2x1_32bits muxout (
     .inA(ALUResult),
     .inB(ReadData),
-    .sel(MemtoReg),
+    .sel(ResultSrc),
     .out(Result)
   );
 
