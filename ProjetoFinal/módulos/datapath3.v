@@ -1,16 +1,12 @@
 module datapath3 (
   input [31:0] PC,
-  input [20:0] Instr,
-  input RegDst,
-  output [31:0] PCBRanch,
+  input [25:0] Instr,
+  output [31:0] PCTarget,
   output [31:0] PCPlus4,
-  output [31:0] SignImm,
-  output [4:0] WriteReg
+  output [31:0] ImmExt,
 );
 
 wire C_out;
-wire [31:0] SignImm_wire;
-wire [31:0] desloca;
 localparam N = 32;
 
 assign SignImm = SignImm_wire;
@@ -24,27 +20,15 @@ assign SignImm = SignImm_wire;
   );
 
   SignExtend signextend (
-    .in(Instr[15:0]),
-    .out(SignImm_wire)
-  );
-
-  mux2x1_5bits mux (
-    .inA(Instr[20:16]),
-    .inB(Instr[15:11]),
-    .sel(RegDst),
-    .out(WriteReg)
-  );
-
-  desloca deslocadev (
-    .SignImm(SignImm_wire),
-    .desloca(desloca)
+    .in(Instr[25:0]),
+    .out(ImmExt)
   );
 
   carry_look_ahead #(.N(N)) sum2 (
     .A(desloca),
     .B(PCPlus4),
     .C_in(1'b0),
-    .S(PCBranch),
+    .S(PCTarget),
     .C_out(C_out)
   );
 
