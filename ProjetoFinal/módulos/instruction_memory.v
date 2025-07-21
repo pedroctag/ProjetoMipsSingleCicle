@@ -43,6 +43,6 @@ initial begin
 end
 always @ (*)
 begin
-    RD <= instruction[A]; // Saída recebe a instrução
+    RD = instruction[A[31:2]]; // Saída recebe a instrução alinhada
 end
 endmodule
