@@ -14,10 +14,10 @@ always @ (posedge clk)
 begin
     if(WE)
     begin
-        Memory_cell[A] <= WD; // Escreve na unidade de endereço A
+        Memory_cell[A[31:2]] <= WD; // Escreve na unidade de endereço A
     end
 end
 
-assign RD = Memory_cell[A]; // Lê da unidade de endereço A
+assign RD = Memory_cell[A[31:2]]; // Lê da unidade de endereço A
 
 endmodule

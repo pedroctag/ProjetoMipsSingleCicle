@@ -4,11 +4,12 @@ module instruction_memory (
 );
 
 reg [31:0] instruction [0:63]; // 32 espaços de instrução de 32 bits cada
-//wire [31:0] aux;
-//assign aux = A - 32'h1000;
+wire [29:0] aux;
+assign aux = A [31:2];
+
 //espaços de memória para teste inicial    
 initial begin
-    instruction[0]  = 32'hFFC4A303;
+    instruction[0]  = 32'hFF_C4_A3_03;
     instruction[1]  = 32'h0064A623;
     instruction[2]  = 32'h0062E233;
     instruction[3]  = 32'hFE420AE3;
@@ -44,6 +45,6 @@ initial begin
 end
 always @ (*)
 begin
-    RD = instruction[A[31:2]]; // Saída recebe a instrução alinhada
+    RD = instruction[aux]; // Saída recebe a instrução alinhada
 end
 endmodule
