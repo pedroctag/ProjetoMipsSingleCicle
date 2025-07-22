@@ -8,11 +8,11 @@ module ALU(
 always @(*)
 begin
     case (ALUControl)
-        3'b010: ALUResult = A + B;
-        3'b110: ALUResult = A - B;
-        3'b000: ALUResult = A & B;
-        3'b001: ALUResult = A | B;
-        3'b111: ALUResult = (A < B) ? 32'd1 : 32'd0;
+        3'b000: ALUResult = A + B; //soma
+        3'b001: ALUResult = A - B; //sub
+        3'b010: ALUResult = A & B; //and
+        3'b011: ALUResult = A | B; //or
+        3'b101: ALUResult = (A < B) ? 32'd1 : 32'd0; //slt
  
         default: ALUResult = 32'b0; 
     endcase
