@@ -9,27 +9,27 @@ assign aux = A [31:2];
 
 //espaços de memória para teste inicial    
 initial begin
-    instruction[0]  = 32'hFF_C4_A3_03;
-    instruction[1]  = 32'h0064A423;
-    instruction[2]  = 32'h0062E233;
-    instruction[3]  = 32'h007302B3;
-    instruction[4]  = 32'b00000000010101000010000100100011;
-    instruction[5]  = 32'h00500113; 
-    instruction[6]  = 32'h00C00193; 
-    instruction[7]  = 32'hFF718393; 
-    instruction[8]  = 32'h0023E233;
-    instruction[9]  = 32'h0023E233;
+    instruction[0]  = 32'hFF_C4_A3_03; 
+    instruction[1]  = 32'h0064A423; 
+    instruction[2]  = 32'h0062E233; 
+    instruction[3]  = 32'h00_73_02_B3; 
+    instruction[4]  = 32'b0000000_00101_01000_010_00010_0100011; // escreve C no endereço 10
+    instruction[5]  = 32'b1111111_00100_00100_000_01001_1100011; // volta ao começo do loop se x4 == x4
+    instruction[6]  = 32'h0; 
+    instruction[7]  = 32'h0; 
+    instruction[8]  = 32'h0;
+    instruction[9]  = 32'h0;
     instruction[10]  = 32'd0;
-    instruction[11]  = 32'h0062E233;
-    instruction[12]  = 32'hFE420AE3;
+    instruction[11]  = 32'h0;
+    instruction[12]  = 32'h0;
     instruction[13]  = 32'd0;
     instruction[14]  = 32'd0;
     instruction[15]  = 32'd0; 
-    instruction[16]  = 32'h0064A623;
+    instruction[16]  = 32'h0;
     instruction[17]  = 32'd0; 
     instruction[18]  = 32'd0;
     instruction[19]  = 32'd0;
-    instruction[20]  = 32'hFFC4A303;
+    instruction[20]  = 32'h0;
     instruction[21]  = 32'd0;
     instruction[22]  = 32'd0;
     instruction[23]  = 32'd0;
