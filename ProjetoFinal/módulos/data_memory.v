@@ -10,6 +10,22 @@ module data_memory (
 
 reg [31:0] Memory_cell [0:63]; // 32 unidades de memória de 32 bits
 
+initial
+begin
+    Memory_cell[0] = 32'h0;
+    Memory_cell[1] = 32'h1;
+    Memory_cell[2] = 32'h2;
+    Memory_cell[3] = 32'h3;
+    Memory_cell[4] = 32'h4;
+    Memory_cell[5] = 32'h5;
+    Memory_cell[6] = 32'h6;
+    Memory_cell[7] = 32'h7;
+    Memory_cell[8] = 32'h8;
+    Memory_cell[9] = 32'h9;
+    Memory_cell[10] = 32'h10;
+
+end
+
 always @ (posedge clk)
 begin
     if(WE)
