@@ -33,13 +33,12 @@ module datapath1_tb();
     always #5 clk = ~clk;
 
     initial begin
-        $display("Iniciando simulação do datapath1...");
-        $monitor("Tempo=%0dns | PC=%h | Instr=%h | SrcA=%h | WriteData=%h", $time, PC, Instr, SrcA, WriteData);
 
         // Inicializações
         clk = 0;
         rst = 1;
-        PCTarget = 32'h00000004;
+        
+        PCTarget = 32'h00000000;
         PCPlus4 = PC + 4;
         Result = 32'hABCD1234; // Valor a ser escrito em um registrador
         PCSrc = 0;
