@@ -1,6 +1,6 @@
 module Control_Unit (
   input [6:0] op,
-  output ResultSrc,
+  output [1:0]ResultSrc,
   output MemWrite,
   output PCSrc,
   output ALUSrc,
@@ -13,8 +13,9 @@ module Control_Unit (
 );
 
 wire Branch;
+wire Jump;
 wire [1:0] ALUOp;
-assign PCSrc = Branch & zero;
+assign PCSrc = (Branch & zero) | Jump;
 Main_Decoder maindecoder (
   .op(op),
   .Branch(Branch),
@@ -23,7 +24,8 @@ Main_Decoder maindecoder (
   .ALUSrc(ALUSrc),
   .ImmSrc(ImmSrc),
   .RegWrite(RegWrite),
-  .ALUOp(ALUOp)
+  .ALUOp(ALUOp),
+  .Jump(Jump)
 );
 
 ULA_Decoder uladecoder (
