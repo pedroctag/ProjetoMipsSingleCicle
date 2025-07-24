@@ -16,7 +16,7 @@ begin
     register[1] = 32'h0;
     register[2] = 32'h0;
     register[3] = 32'h0;
-    register[4] = 32'h4;
+    register[4] = 32'h0;
     register[5] = 32'h0;
     register[6] = 32'h0;
     register[7] = 32'h0;
@@ -50,7 +50,7 @@ end
 
 always @ (posedge clk)
 begin
-    if (WE)
+    if (WE && A3 != 0)
         begin
             register[A3] <= WD3; // Escrita no registrador de endereço A3
         end
