@@ -13,16 +13,38 @@ reg [31:0] register [0:31]; // 32 registradores de 32 bits
 initial
 begin
     register[0] = 32'h0;
-    register[1] = 32'h1;
-    register[2] = 32'h2;
-    register[3] = 32'h3;
-    register[4] = 32'h0;
-    register[5] = 32'h5;
-    register[6] = 32'h6;
-    register[7] = 32'h7;
-    register[8] = 32'h8;
-    register[9] = 32'h9;
-    register[10] = 32'h10;
+    register[1] = 32'h0;
+    register[2] = 32'h0;
+    register[3] = 32'h0;
+    register[4] = 32'h4;
+    register[5] = 32'h0;
+    register[6] = 32'h0;
+    register[7] = 32'h0;
+    register[8] = 32'h0;
+    register[9] = 32'h0;
+    register[10] = 32'h0;
+    register[11] = 32'h0;
+    register[12] = 32'h0;
+    register[13] = 32'h0;
+    register[14] = 32'h0;
+    register[15] = 32'h0;
+    register[16] = 32'h0;
+    register[17] = 32'h0;
+    register[18] = 32'h0;
+    register[19] = 32'h0;
+    register[20] = 32'h0;
+    register[21] = 32'h0;
+    register[22] = 32'h0;
+    register[23] = 32'h0;
+    register[24] = 32'h0;
+    register[25] = 32'h0;
+    register[26] = 32'h0;
+    register[27] = 32'h0;
+    register[28] = 32'h0;
+    register[29] = 32'h0;
+    register[30] = 32'h0;
+    register[31] = 32'h0;
+
 
 end
 

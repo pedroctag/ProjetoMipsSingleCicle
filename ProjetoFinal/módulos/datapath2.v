@@ -2,9 +2,10 @@ module datapath2 (
   input [31:0] ImmExt,
   input [31:0] WriteData,
   input [31:0] SrcA,
+  input [31:0] PCPlus4,
   input [2:0] ALUControl,
   input MemWrite,
-  input ResultSrc,
+  input [1:0] ResultSrc,
   input clk,
   input ALUSrc,
   output zero,
@@ -38,9 +39,10 @@ module datapath2 (
     .RD(ReadData)
   );
 
-  mux2x1_32bits muxout (
+  mux3x1_32bits muxout (
     .inA(ALUResult),
     .inB(ReadData),
+    .inC(PCPlus4),
     .sel(ResultSrc),
     .out(Result)
   );

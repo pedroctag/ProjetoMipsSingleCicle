@@ -2,7 +2,8 @@ module cpu(
 input clk, rst
 );
 
-wire PCSrc, ResultSrc, MemWrite, ALUSrc, RegWrite;
+wire PCSrc, MemWrite, ALUSrc, RegWrite;
+wire [1:0] ResultSrc;
 wire [1:0] ImmSrc;
 wire [2:0] ALUControl;
 
@@ -46,6 +47,7 @@ datapath2 dp2 (
   .ALUControl(ALUControl),
   .MemWrite(MemWrite),
   .ResultSrc(ResultSrc),
+  .PCPlus4(PCPlus4),
   .clk(clk),
   .ALUSrc(ALUSrc),
   .zero(zero),

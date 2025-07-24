@@ -1,7 +1,7 @@
 module mux3x1_32bits(
     input [31:0] inA, inB, inC,
     input [1:0] sel,
-    output [31:0] out
+    output reg [31:0] out
 );
 
 always @ (*)
