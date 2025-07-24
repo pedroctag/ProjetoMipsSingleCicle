@@ -10,7 +10,7 @@ module data_memory (
 
 reg [31:0] Memory_cell [0:63]; // 32 unidades de memória de 32 bits
 
-/*initial
+initial
 begin
     Memory_cell[0] = 32'h0;
     Memory_cell[1] = 32'h0;
@@ -77,7 +77,7 @@ begin
     Memory_cell[62] = 32'h0;
     Memory_cell[63] = 32'h0;
 
-end*/
+end
 
 always @ (posedge clk)
 begin
