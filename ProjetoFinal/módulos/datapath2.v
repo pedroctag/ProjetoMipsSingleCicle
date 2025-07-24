@@ -2,7 +2,7 @@ module datapath2 (
   input [31:0] ImmExt,
   input [31:0] WriteData,
   input [31:0] SrcA,
-  input [31:0] PCPlus4,
+  input [31:0] PCPlus4;
   input [2:0] ALUControl,
   input MemWrite,
   input [1:0] ResultSrc,
